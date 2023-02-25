@@ -80,7 +80,7 @@ def Login(request):
             return redirect('home')
         else:
             messages.info(request,'Invalid credentials')
-            return redirect ('/')
+            return redirect ('login')
               
     else:
         return render (request,'login.html')
