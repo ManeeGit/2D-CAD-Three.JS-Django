@@ -19,7 +19,7 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.shadowMap.enabled = true;
   
-
+  
       // // Create a Shape for the circle path
       // const circleShape = new THREE.Shape();
       // circleShape.absarc(0, 0, 1, 0, Math.PI * 2, false);
@@ -35,7 +35,6 @@ function init() {
 
       // // Add the mesh to the scene
       // scene.add(circleOutline);
-      
 
   //AxesHelper added here !
   var axisHelperSize = 0.5;
