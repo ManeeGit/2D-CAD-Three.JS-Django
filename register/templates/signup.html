@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Signup Page</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!--Stylesheet-->
+    <style media="screen">
+        *,
+  *:before,
+  *:after{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+  }
+  body{
+      background-color: #4f3c9e;
+  }
+  .background{
+      width: 430px;
+      height: 520px;
+      position: absolute;
+      transform: translate(-50%,-50%);
+      left: 50%;
+      top: 50%;
+  }
+  .background .shape{
+      height: 200px;
+      width: 200px;
+      position: absolute;
+      border-radius: 50%;
+  }
+  
+  form{
+      height: 590px;
+      width: 500px;
+      background-color: rgba(255,255,255,0.13);
+      position: absolute;
+      transform: translate(-50%,-50%);
+      top: 50%;
+      left: 80%;
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 40px rgba(8,7,16,0.6);
+      padding: 20px 30px;
+  }
+  form *{
+      font-family: 'Poppins',sans-serif;
+      color: #ffffff;
+      letter-spacing: 0.3px;
+      outline: none;
+      border: none;
+  }
+  form h3{
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 12px;
+      text-align: center;
+  }
+  
+  label{
+      display: block;
+      margin-top: 11px;
+      font-size: 16px;
+      font-weight: 500;
+  }
+  input{
+      display: block;
+      height: 30px;
+      width: 100%;
+      background-color: rgba(255,255,255,0.07);
+      border-radius: 2px;
+      padding: 10px 10px;
+      margin-top: 2px;
+      font-size: 16px;
+      font-weight: 300;
+  }
+  ::placeholder{
+      color: #e5e5e5;
+  }
+  button{
+      margin-top: 20px;
+      width: 100%;
+      background-color: #64d462;
+      color: #080710;
+      padding: 15px 0;
+      font-size: 18px;
+      font-weight: 900;
+      border-radius: 250px;
+      cursor: pointer;
+  }
+ 
+  .social{
+    margin-top: 30px;
+    display: flex;
+  }
+  .social div{
+    background:red;
+    width: 150px;
+    border-radius: 3px;
+    padding: 5px 10px 10px 5px;
+    background-color: rgba(255,255,255,0.27);
+    color: #eaf0fb;
+    text-align: center;
+  }
+  .social div:hover{
+    background-color: rgba(255,255,255,0.47);
+  }
+  .social .fb{
+    margin-left: 25px;
+  }
+  .social i{
+    margin-right: 4px;
+  }
+    </style>
+    <script>var pswd1 = document.getElementById("password")
+        , pswd2 = document.getElementById("confirm_password");
+      
+      function validatePassword(){
+        if(pswd1.value != pswd2.value) {
+          pswd2.setCustomValidity("Passwords Don't Match");
+        } else {
+          pswd2.setCustomValidity('');
+        }
+      }
+      
+      password.onchange = validatePassword;
+      confirm_password.onkeyup = validatePassword;</script>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <form method="post">
+        {% csrf_token %} 
+        <h3>Signup</h3>
+        
+        <label for ="first_name">First Name</label>
+        <input type="text" placeholder="Enter First Name" name="first_name" id="first_name">
+        
+        <label for ="last_name">Last Name</label>
+        <input type="text" placeholder="Enter Last Name" name="last_name" id="last_name">
+        
+    
+        <label for="email">Email</label>
+        <input type="email" placeholder="Enter E-Mail" name="email" id="email">
+        
+          
+
+        <label for="username">Username</label>
+        <input type="text" placeholder="Username" name="username" id="username">
+
+        <label for="password1">Password</label>
+        <input type="password" placeholder="Password" id="password1" name="password1">
+        
+
+        <label for="password2">Retype Password</label>
+        <input type="password" placeholder="Confirm Password" id="password2" name="password2">
+        
+        <button type="submit">Signup</button><br><br>
+        <label>If you are a registered user :
+        <a href="{% url 'login' %}" >Login/Signin</a></label>
+    </form>
+    
+    <div align='center'style="color:red">
+      {% for message in messages %}
+      <h1>{{message}}</h1>
+      {% endfor %}
+    </div>
+</body>
+<!-- <script>  
+  function verifyPassword() {  
+    var pw = document.getElementById("password").value;  
+    //check empty password field  
+    if(pw == "") {  
+       document.getElementById("message").innerHTML = "**Fill the password please!";  
+       return false;  
+    }  
+     
+   //minimum password length validation  
+    if(pw.length < 8) {  
+       document.getElementById("message").innerHTML = "**Password length must be atleast 8 characters";  
+       return false;  
+    }  
+    
+  //maximum length of password validation  
+    if(pw.length > 15) {  
+       document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";  
+       return false;  
+    } else {  
+       alert("Password is correct");  
+    }  
+  }  
+  </script>   -->
+</html>

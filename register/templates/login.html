@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Login Page</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+        *,
+  *:before,
+  *:after{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+  }
+  body{
+      background-color: #4f3c9e;
+  }
+  .background{
+      width: 430px;
+      height: 520px;
+      position: absolute;
+      transform: translate(-50%,-50%);
+      left: 50%;
+      top: 50%;
+  }
+  .background .shape{
+      height: 200px;
+      width: 200px;
+      position: absolute;
+      border-radius: 50%;
+  }
+  
+  form{
+      height: 350px;
+      width: 500px;
+      background-color: rgba(255,255,255,0.13);
+      position: absolute;
+      transform: translate(-50%,-50%);
+      top: 50%;
+      left: 80%;
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 40px rgba(8,7,16,0.6);
+      padding: 20px 30px;
+  }
+  form *{
+      font-family: 'Poppins',sans-serif;
+      color: #ffffff;
+      letter-spacing: 0.3px;
+      outline: none;
+      border: none;
+  }
+  form h3{
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1px;
+      text-align: center;
+  }
+  
+  label{
+      display: block;
+      margin-top: 20px;
+      font-size: 17px;
+      font-weight: 500;
+  }
+  input{
+      display: block;
+      height: 40px;
+      width: 100%;
+      background-color: rgba(255,255,255,0.07);
+      border-radius: 3px;
+      padding: 0 10px;
+      margin-top: 2px;
+      font-size: 16px;
+      font-weight: 300;
+  }
+  ::placeholder{
+      color: #e5e5e5;
+  }
+  button{
+      margin-top: 20px;
+      width: 100%;
+      background-color: #64d462;
+      color: #080710;
+      padding: 15px 0;
+      font-size: 18px;
+      font-weight: 900;
+      border-radius: 250px;
+      cursor: pointer;
+  }
+  .button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+  .social{
+    margin-top: 30px;
+    display: flex;
+  }
+  .social div{
+    background:red;
+    width: 150px;
+    border-radius: 3px;
+    padding: 5px 10px 10px 5px;
+    background-color: rgba(255,255,255,0.27);
+    color: #eaf0fb;
+    text-align: center;
+  }
+  .social div:hover{
+    background-color: rgba(255,255,255,0.47);
+  }
+  .social .fb{
+    margin-left: 25px;
+  }
+  .social i{
+    margin-right: 4px;
+  }
+      </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="post"> {% csrf_token %} 
+        <h3>Login</h3>
+       
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter Username" id="username" name="username">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" name="password">
+
+        <button type="submit">Log In</button><br><br>
+        
+        <label>If you don't have an account :
+        <a href="{% url 'signup' %}" >Signup</a></label>
+    </form>
+
+    <div align='center'style="color:limegreen">
+      {% for message in messages %}
+      <h1>{{message}}</h1>
+      {% endfor %}
+    </div>
+
+
+
+</body>
+</html>
