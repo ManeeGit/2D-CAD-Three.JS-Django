@@ -19,23 +19,6 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.shadowMap.enabled = true;
   
-  
-      // // Create a Shape for the circle path
-      // const circleShape = new THREE.Shape();
-      // circleShape.absarc(0, 0, 1, 0, Math.PI * 2, false);
-
-      // // Create a Geometry for the circle outline
-      // const circleGeometry = new THREE.ShapeGeometry(circleShape);
-
-      // // Create a Material for the circle outline
-      // const circleMaterial = new THREE.LineBasicMaterial({ color: 0xff0000 });
-
-      // // Create a mesh with the geometry and material
-      // const circleOutline = new THREE.LineLoop(circleGeometry, circleMaterial);
-
-      // // Add the mesh to the scene
-      // scene.add(circleOutline);
-
   //AxesHelper added here !
   var axisHelperSize = 0.5;
   var axisHelperWidth = 5;
@@ -78,7 +61,7 @@ function init() {
   var controls = new function () {
       var self = this;
   
-      this.appliedMaterial = applyMeshNormalMaterial
+      this.appliedMaterial = applyMeshStandardMaterial
       this.castShadow = true;
       this.groundPlaneVisible = true;
   
