@@ -337,7 +337,7 @@
 
 
     <div class="background"></div>
-    <div class="container">
+      <div class="container">
         <div class="login-section">
             <div class="form-box login">
               <form method="post">
@@ -380,7 +380,18 @@
         <div class="create-account">
             <p>Already Have An Account? <a href="{% url 'login' %}" class="login-link">Sign In</a></p>
         </div>
-    </form>
-</div>
+      </form>
+      </div>
+    </div>
+    </div>
+  </div>
+    <div align='center'style="color:red">
+      {% for message in messages %}
+      <h1>{{message}}</h1>
+      {% endfor %}
+    </div>
+
 </body>
+
+
 </html>
