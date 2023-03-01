@@ -56,17 +56,7 @@ function init() {
   scene.add(spotLight);
 
 
-  //two.js circle
-
-  var params = {
-    fullscreen: true,
-    autostart: true,
-    backgroundColor: 'hsl(0, 0%, 100%)'
-  }
   
-  
-  var elem = document.body;
-  var two = new Two(params).appendTo(elem);
 
   //Button Circle Click
   var button = document.createElement('button');
@@ -77,25 +67,35 @@ function init() {
   document.body.appendChild(button);
 
 // Add an event listener to the button
-button.addEventListener('click', function() {
-  var circle = two.makeCircle(110, 110, 100);
-  circle.translation.x=150
-  circle.translation.y=350
-  // circle.fill = "lightblue";
-  circle.stroke='#ffffff';
-  circle.noFill();
-  circle.linewidth=3
-  two.update();
-  var gui = new dat.GUI();
-  const circleFolder = gui.addFolder("Circle");
-  circleFolder.add(circle.translation, "x", 0, 1000).step(1).name("X Position");
-  circleFolder.add(circle.translation, "y", 0, 620).step(1).name("Y Position");
-  // circleFolder.add(circle.radius,'r',10,1000).step(1).name("Radius");
-  circleFolder.add(circle, 'radius', 10, 1000).step(1).name('Radius');
-});
+    button.addEventListener('click', function() {
+      //two.js circle
+  var params = {
+    fullscreen: true,
+    autostart: true,
+    backgroundColor: 'hsl(0, 0%, 100%)'
+  }
+  
+  
+  var elem = document.body;
+  var two = new Two(params).appendTo(elem);
+  
 
+        var circle = two.makeCircle(110, 110, 100);
+        circle.translation.x=150
+        circle.translation.y=350
+        circle.stroke='#ffffff';
+        circle.noFill();
+        circle.linewidth=3
 
- 
+        var gui = new dat.GUI();
+        const circleFolder = gui.addFolder("Circle");
+        circleFolder.add(circle.translation, "x", 0, 1000).step(1).name("X Position");
+        circleFolder.add(circle.translation, "y", 0, 620).step(1).name("Y Position");
+        circleFolder.add(circle, 'radius', 10, 1000).step(1).name('Radius');
+
+      
+    });
+
 
 
   // add the output of the renderer to the html element
@@ -107,17 +107,17 @@ button.addEventListener('click', function() {
   function render() {
 
     //axis helper along with the scene rendering 
-    t++
-    camera.position.x = 0
-    camera.position.y = 0
-    camera.updateMatrixWorld()
-    var axesPlacement = camera.localToWorld(localToCameraAxesPlacement.clone())
-		axisHelper.position.copy(axesPlacement);
+        t++
+        camera.position.x = 0
+        camera.position.y = 0
+        camera.updateMatrixWorld()
+        var axesPlacement = camera.localToWorld(localToCameraAxesPlacement.clone())
+        axisHelper.position.copy(axesPlacement);
 
-      // update the stats and the controls
-    trackballControls.update(clock.getDelta());
-    requestAnimationFrame(render);
-    renderer.render(scene, camera);
+    // update the stats and the controls
+        trackballControls.update(clock.getDelta());
+        requestAnimationFrame(render);
+        renderer.render(scene, camera);
   }
 
   //Window Resize Function.

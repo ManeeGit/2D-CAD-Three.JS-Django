@@ -342,7 +342,11 @@
       <h1>{{message}}</h1>
       {% endfor %}
     </div> -->
-
+    <div align='center'style="color:red">
+        {% for message in messages %}
+        <h1>{{message}}</h1>
+        {% endfor %}
+      </div>
 
     <div class="background"></div>
       <div class="container">
@@ -393,11 +397,7 @@
     </div>
     </div>
   </div>
-    <div align='center'style="color:red">
-      {% for message in messages %}
-      <h1>{{message}}</h1>
-      {% endfor %}
-    </div>
+   
 
 </body>
 
