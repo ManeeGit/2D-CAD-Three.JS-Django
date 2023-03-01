@@ -52,22 +52,32 @@ function init() {
     };
     var elem = document.body;
     var two = new Two(params).appendTo(elem);
-    var circle = two.makeCircle(110, 110, 100);
-    circle.translation.x = 150;
-    circle.translation.y = 350;
-    // circle.fill = "lightblue";
-    circle.stroke = "#ffffff";
-    circle.noFill();
-    circle.linewidth = 3;
-    // two.update();
+    //Button Circle Click
+    var button = document.createElement("button");
+    button.innerHTML = '<span class="material-symbols-outlined">circle</span>';
+    button.style.position = "absolute";
+    button.style.top = "10px";
+    button.style.left = "10px";
+    document.body.appendChild(button);
+    // Add an event listener to the button
+    button.addEventListener("click", function() {
+        var circle = two.makeCircle(110, 110, 100);
+        circle.translation.x = 150;
+        circle.translation.y = 350;
+        // circle.fill = "lightblue";
+        circle.stroke = "#ffffff";
+        circle.noFill();
+        circle.linewidth = 3;
+        two.update();
+        var gui = new dat.GUI();
+        const circleFolder = gui.addFolder("Circle");
+        circleFolder.add(circle.translation, "x", 0, 1000).step(1).name("X Position");
+        circleFolder.add(circle.translation, "y", 0, 620).step(1).name("Y Position");
+        // circleFolder.add(circle.radius,'r',10,1000).step(1).name("Radius");
+        circleFolder.add(circle, "radius", 10, 1000).step(1).name("Radius");
+    });
     // add the output of the renderer to the html element
     document.getElementById("webgl-output").appendChild(renderer.domElement);
-    var gui = new dat.GUI();
-    const circleFolder = gui.addFolder("Circle");
-    circleFolder.add(circle.translation, "x", 0, 1000).step(1).name("X Position");
-    circleFolder.add(circle.translation, "y", 0, 620).step(1).name("Y Position");
-    // circleFolder.add(circle.radius,'r',10,1000).step(1).name("Radius");
-    circleFolder.add(circle, "radius", 10, 1000).step(1).name("Radius");
     render();
     var t = 0 //declaring a variable to iterate in the following function
     ;
@@ -81,15 +91,9 @@ function init() {
         axisHelper.position.copy(axesPlacement);
         // update the stats and the controls
         trackballControls.update(clock.getDelta());
-        // stats.update();
         requestAnimationFrame(render);
         renderer.render(scene, camera);
     }
-    function renderTwo() {
-        requestAnimationFrame(renderTwo);
-        two.update();
-    }
-    renderTwo();
     //Window Resize Function.
     function onResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
