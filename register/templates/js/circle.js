@@ -35,7 +35,7 @@ function init() {
   var clock = new THREE.Clock();
 
   //Grid Helper
-  const gridHelper = new THREE.GridHelper(10000000, 1000000, 0xaec6cf, 0xaec6cf)
+  const gridHelper = new THREE.GridHelper(10000000, 1000000, 0x5B6685, 0x5B6685)
   gridHelper.rotation.x = -0.5*Math.PI;
   scene.add(gridHelper)
 
@@ -55,28 +55,42 @@ function init() {
   spotLight.castShadow = true;
   scene.add(spotLight);
 
+
+  //two.js circle
+
+  var params = {
+    fullscreen: true,
+    autostart: true,
+    backgroundColor: 'hsl(0, 0%, 100%)'
+  }
+  
+  
+  var elem = document.body;
+  var two = new Two(params).appendTo(elem);
+  
+  var circle = two.makeCircle(110, 110, 100);
+  circle.translation.x=150
+  circle.translation.y=350
+  // circle.fill = "lightblue";
+  circle.stroke='#ffffff';
+  circle.noFill();
+  circle.linewidth=3
+  // two.update();
+
+
   // add the output of the renderer to the html element
   document.getElementById("webgl-output").appendChild(renderer.domElement);
 
-  var controls = new function () {
-      var self = this;
-  
-      this.appliedMaterial = applyMeshStandardMaterial
-      this.castShadow = true;
-      this.groundPlaneVisible = true;
-  
-      this.radius = 5;
-      this.segments = 128;
-  
-      this.redraw = function () {
-        redrawGeometryAndUpdateUI(gui, scene, controls, function() {
-            return new THREE.CircleGeometry(self.radius, self.segments);
-        });
-      };
-    };
+ 
   
   var gui = new dat.GUI();
-  gui.add(controls, 'radius', 0, 75000000).onChange(controls.redraw);
+  const circleFolder = gui.addFolder("Circle");
+  circleFolder.add(circle.translation, "x", 0, 1000).step(1).name("X Position");
+  circleFolder.add(circle.translation, "y", 0, 620).step(1).name("Y Position");
+  // circleFolder.add(circle.radius,'r',10,1000).step(1).name("Radius");
+  circleFolder.add(circle, 'radius', 10, 1000).step(1).name('Radius');
+  
+
   
 
   render();
@@ -98,6 +112,11 @@ function init() {
     renderer.render(scene, camera);
   }
 
+  function renderTwo() {
+    requestAnimationFrame(renderTwo);
+    two.update();
+  }
+  renderTwo();
   //Window Resize Function.
   function onResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
