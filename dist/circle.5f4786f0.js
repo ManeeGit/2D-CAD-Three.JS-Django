@@ -44,6 +44,13 @@ function init() {
     spotLight.position.set(-10, 20, -5);
     spotLight.castShadow = true;
     scene.add(spotLight);
+    var params = {
+        fullscreen: true,
+        autostart: true,
+        backgroundColor: "hsl(0, 0%, 100%)"
+    };
+    var elem = document.body;
+    var two = new Two(params).appendTo(elem);
     //Button Circle Click
     var button = document.createElement("button");
     button.innerHTML = '<span class="material-symbols-outlined">circle</span>';
@@ -54,13 +61,6 @@ function init() {
     // Add an event listener to the button
     button.addEventListener("click", function() {
         //two.js circle
-        var params = {
-            fullscreen: true,
-            autostart: true,
-            backgroundColor: "hsl(0, 0%, 100%)"
-        };
-        var elem = document.body;
-        var two = new Two(params).appendTo(elem);
         var circle = two.makeCircle(110, 110, 100);
         circle.translation.x = 150;
         circle.translation.y = 350;
