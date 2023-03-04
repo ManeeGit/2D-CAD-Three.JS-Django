@@ -68,7 +68,7 @@ def Signup(request):
 
     
 
-@login_required
+# @login_required
 def Login(request):
     if request.method=='POST':
         username=request.POST['username']

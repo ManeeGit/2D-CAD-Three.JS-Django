@@ -51,6 +51,8 @@ function init() {
     };
     var elem = document.body;
     var two = new Two(params).appendTo(elem);
+    const canvas = two.renderer.domElement;
+    canvas.style.cursor = "crosshair";
     // Add an event listener to the button
     //Line
     var button = document.createElement("button");
@@ -176,7 +178,7 @@ function init() {
         camera.updateMatrixWorld();
         var axesPlacement = camera.localToWorld(localToCameraAxesPlacement.clone());
         axisHelper.position.copy(axesPlacement);
-        // update the stats and the controls
+        //   // update the stats and the controls
         trackballControls.update(clock.getDelta());
         requestAnimationFrame(render);
         renderer.render(scene, camera);
