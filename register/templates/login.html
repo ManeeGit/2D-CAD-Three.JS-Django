@@ -18,12 +18,13 @@
       
     }
     .background{
-    background: url("{% static 'img/backgroun3.jpg' %}") no-repeat;
+    /* background: url("{% static 'img/final_logo.png' %}") no-repeat; */
+    background-color: white;
     background-position: center;
     background-size:cover ;
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    filter: blur(15px);
+    filter: blur(0px);
 }
     
     .header{
@@ -97,7 +98,7 @@
         font-size: 22px;
     }
   
-    .container{
+    /* .container{
         position: absolute;
         left: 50%;
         top: 50%;
@@ -105,13 +106,12 @@
         width: 75%;
         height: 550px;
         margin-top: 20px;
-        background: url("{% static 'img/backgroun3.jpg' %}") no-repeat;
         background-position: center;
         background-size:cover ;
         border-radius: 20px;
         overflow: hidden;
         
-    }
+    } */
     .item{
         position: absolute;
         top: 0;
@@ -158,7 +158,7 @@
         width: calc(100% - 58%);
         height: 100%;
         color: #000;
-        backdrop-filter: blur(15px);
+        backdrop-filter: blur(0px);
     }
     
     .login-section .form-box{
@@ -275,7 +275,7 @@
         margin: 25px;
     }
     .create-account p a{
-        color: #fff;
+        color: #9d68da;
         font-weight: 600px;
         text-decoration: none;
     }
@@ -299,7 +299,7 @@
                 {% csrf_token %} 
                     <h2>Login</h2>
                     <div class="input-box">
-                        <span class="icon"><i class='bx bxs-envelope'></i></span>
+                        <span class="icon"><i class='bx bxs-user'></i></span>
                         <input  id="username" name="username" type="name" required>
                         <label >Username</label>
                     </div>

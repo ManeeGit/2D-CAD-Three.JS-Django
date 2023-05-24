@@ -1,0 +1,110 @@
+{{- define "body" -}}
+{{ partial "hero" . }}
+
+  <section class="full-container" style="max-width:1200px; margin:2rem auto;">
+
+  <div class="full-container" style="width:1200px;">
+    <h2>Examples</h2>
+    <p>{{.Description}}</p>
+      <div id="tag-buttons">
+        <button class="muted-button">elements</button>
+        <button class="muted-button">input</button>
+        <button class="muted-button">graph</button>
+        <button class="muted-button">maps</button>
+        <button class="muted-button">math</button>
+        <button class="muted-button">svg</button>
+        <button class="muted-button">games</button>
+        <button class="muted-button">color</button>
+      </div>
+    <script type="module">
+      let buttons = document.querySelector('#tag-buttons');
+      let selected = new Set();
+
+      /**
+      * Displays the union of the selected tags. If nothing is selected displays
+      * everything.
+      */
+      function display() {
+
+        // console.log(selected);
+        if( selected.size  == 0 ){
+
+          // display everything
+          document.querySelectorAll('.card').forEach((example) => {
+            example.style.display = '';
+          });
+        } else {
+
+          // hide everthing
+          document.querySelectorAll('.card').forEach((example) => {
+            example.style.display = 'none';
+          });
+
+          let query = '.' + Array.from(selected).join(', .');
+          let examples = document.querySelectorAll(query);
+          examples.forEach((example) => {
+            example.style.display = '';
+          });
+        }
+        // document.querySelectorAll( `.${}`)
+      }
+
+      buttons.querySelectorAll('button').forEach((button) => {
+        let tag = button.innerText;
+        button.onclick = function( event) {
+          if( selected.has(tag)) {
+            selected.delete(tag);
+          } else {
+            selected.add(tag);
+          }
+          button.classList.toggle('selected');
+          display();
+        };
+      });
+    </script>
+  </div>
+  <div class="grid" style="grid-template-columns:33.33% 33.33% 33.33%;">
+  {{ range .Pages }}
+    {{ if eq .Params.Ignore false }}{{ .Render "card" }}{{ end }}
+  {{ end }}
+  </div>
+  </section>
+  <div style="min-height:400px">
+  </div>
+
+  <!-- <div class="grid" style="grid-template-columns:33.33% 33.33% 33.33%;">
+    <div class="card">
+      <a href="./">
+        <h2>Maps</h2>
+        <div class="vertical-center">
+          <img src="/images/population-of-united-states.svg" alt="Place holder">
+        </div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="./">
+        <h2>Elements</h2>
+        <div class="vertical-center">
+          <img src="/images/elements.svg" alt="Place holder">
+        </div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="./">
+        <h2>SVG</h2>
+        <div class="vertical-center">
+          <img src="/images/svg.svg" alt="Place holder">
+        </div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="./">
+        <h2>Math</h2>
+        <div class="vertical-center">
+          <img src="/images/prime-factorization.svg" alt="Place holder">
+        </div>
+      </a>
+    </div>
+  </div> -->
+
+{{ end }}

@@ -1,0 +1,120 @@
+/*! Primitive
+ * A front end Sass boilerplate
+ *
+ * Author: Tania Rascia
+ */
+
+// Configuration
+@import "base/variables";
+@import "base/mixins";
+
+// Reset
+@import "base/normalize";
+@import "base/reset";
+
+// Components
+@import "components/scaffolding";
+@import "components/flex";
+@import "components/grid";
+@import "components/helpers";
+@import "components/buttons";
+// @import "components/forms";
+@import "components/tables";
+@import "components/navigation";
+@import "components/layout";
+@import "components/sandbox";
+@import "components/syntax";
+
+.header-link  {
+  text-decoration: none;
+  color:$font-color;
+}
+
+.header-link:hover {
+  color:$font-color;
+  cursor:pointer;
+}
+
+.header-link::after {
+  padding-left: .5rem;
+  content: url(/images/link.svg);
+}
+
+.headshot {
+  clip-path: circle(60px at center);
+}
+
+.i-container {
+  margin-bottom: 1.5rem;
+}
+
+.interactive-container .interactive {
+  display:block;
+  margin:auto;
+}
+
+.video {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.muted-button:focus {
+  outline:0;
+}
+
+button.selected:focus, button.selected {
+  background: #dddddd;
+}
+
+.center {
+  margin:auto;
+  display: block;
+}
+
+// TODO: move
+pre {
+  border: 1px solid gray;
+  // background: !important #dddddd;
+}
+.collapse {
+  padding: 2rem 0px;
+  border-bottom:
+  1px solid #dddddd;
+  background: #f8f8f8;
+}
+
+.collapse > * {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.collapse > img {
+  max-width: 100%;
+}
+
+.card {
+   display:block;
+   background:white;
+   margin:16px;
+   border-radius:10px;
+   overflow:hidden;
+   border: 1px solid #dddddd;
+}
+
+.card > a > h2 {
+  color: $font-color;
+  font-size: $font-size;
+  margin: 0;
+  height:2.5rem;
+  background:#E7EAED;
+  border-bottom: 1px solid #999999;
+  padding-left:.75rem;
+  padding-top:.75rem;
+}
+
+.card img {
+  margin:auto;
+  display:block;
+  // height: 220px;
+  width:100%;
+}
